@@ -33,6 +33,16 @@ class AddProductForm extends Component {
     //console.log(this.state);
     // truyên dữ liệu từ state sang props để có thể thêm vào form list
     this.props.onSubmit(this.state);
+    // sau khi submit thi close form và xóa các trường đi
+    this.onClear();
+    this.onCloseFormAdd();
+  }
+  onClear = () => {
+    this.setState({
+        name : '',
+        quantity: 0,
+        status: false
+    })
   }
   render() {
 
@@ -64,7 +74,7 @@ class AddProductForm extends Component {
                     <br/>
                     <div className="text-center">
                         <button type="submit" className="btn btn-success">Thêm</button>&nbsp;
-                        <button type="button" className="btn btn-danger">Hủy Bỏ</button>
+                        <button type="button" className="btn btn-danger" onClick={this.onClear}>Hủy Bỏ</button>
                     </div>
                 </form>
             </div>

@@ -23,6 +23,7 @@ class App extends Component {
         });
     }
   }
+  /*
   onGenerateData = () => {
     var tasks = [
       {
@@ -48,10 +49,11 @@ class App extends Component {
     this.setState({
       tasks : tasks
     });
-     /* lưu trữ dữ liệu vào localStorage, khi refresh lại browser thì không bị mất data
-        JSON.stringify chuyển Object sang dạng string */
+     // lưu trữ dữ liệu vào localStorage, khi refresh lại browser thì không bị mất data
+     //   JSON.stringify chuyển Object sang dạng string 
     localStorage.setItem('tasks',JSON.stringify(tasks));
   }
+  */
   /*Tạo mới GUID trong js*/
   S4() {
     return Math.floor((1+Math.random()) * 0x10000).toString(16).substring(1);
@@ -109,11 +111,13 @@ class App extends Component {
                       onClick={this.onToggleFormAdd}>
                         Thêm Sản Phẩm &nbsp;<span className="fa fa-plus mr-5"></span> 
                     </button>
+                  {/*
                     <button type="button" className="btn btn-primary btnAddProduct"
                       onClick={this.onGenerateData}
                     >
                         Generate Data &nbsp; 
                     </button>
+                    */}
                   </div>
                   <div className="row margin-top-15 ">
                     {/*Search Form*/}
