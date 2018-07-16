@@ -89,6 +89,30 @@ class App extends Component {
     //   status : data.status
     // }
   }
+  onUpdateStatus = (id) => {
+    //console.log(id);
+    var { tasks } = this.state;
+    var index = this.findIndex(id);
+    console.log(index);
+    if(index !== -1){
+      tasks[index].status = !tasks[index].status;
+      this.setState({
+        tasks : tasks
+      });
+      localStorage.setItem('tasks',JSON.stringify(tasks));
+    }
+  }
+  // func tìm vị trí hiện tại(index) của id trong mảng
+  findIndex = (id) => {
+    var { tasks } = this.state;
+    var result = -1; // giá trựi mặc định
+    tasks.forEach((task, index) => {
+      if(task.id === id){
+        result = index;
+      }
+    });
+    return result;
+  }
   render() {
     var {tasks, isDisplayFormAdd} = this.state; // tạo ra 1 task mới # var tasks = this.state.tasks
     var elementFormAdd = isDisplayFormAdd === true ? 
@@ -128,7 +152,7 @@ class App extends Component {
                   <div className="row margin-top-15">
                       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                           {/*List Product Form*/}
-                          <ListProduct tasks={ tasks }/>
+                          <ListProduct tasks={ tasks } onUpdateStatus={this.onUpdateStatus}/>
                       </div>
                   </div>
               </div>

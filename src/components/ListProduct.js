@@ -6,7 +6,11 @@ class ListProduct extends Component {
   	/*Loop các phần tử của list và hiển thị*/
   	var {tasks} = this.props;
   	var elementTask = tasks.map((task, index) =>{
-  		return <TaskItemEvent key={task.id} index={index} task={task} />
+  		return <TaskItemEvent key={task.id} 
+                            index={index} 
+                            task={task} 
+                            onUpdateStatus = {this.props.onUpdateStatus} // get func onUpdateStatus từ App.js sau đố truyền vào từng Item
+                            />
   	})
   
     return (

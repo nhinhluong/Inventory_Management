@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 
 class TaskItemEvent extends Component {
   
+  onUpdateStatus = () => {
+    //console.log(this.props.task.id);
+    this.props.onUpdateStatus(this.props.task.id); // get id từ Item sau đó truyền ngược về list cha
+  }
   render() {
     var {task, index} = this.props;
     return (
@@ -10,7 +14,9 @@ class TaskItemEvent extends Component {
           <td>{task.name}</td>
           <td>{task.quantity}</td>
           <td className="text-center">
-              <span className={task.status === true ? "label label-success" : "label label-danger"}>
+              <span className={task.status === true ? "label label-success" : "label label-danger"}
+                onClick={this.onUpdateStatus}
+              >
                   {task.status === true  ? "Kích Hoạt" : "Ẩn"}
               </span>
           </td>
